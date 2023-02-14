@@ -46,16 +46,16 @@ let linksData = [
   {
     icon: Blog,
     name: "博客",
-    link: "https://blog.imsyy.top/",
+    link: "https://irithys.com/",
   },
   {
     icon: Cloud,
-    name: "网盘",
-    link: "https://pan.imsyy.top/",
+    name: "书影音",
+    link: "https://annal.irithys.com/",
   },
   {
     icon: CompactDisc,
-    name: "音乐",
+    name: "订阅",
     link: "https://music.imsyy.top/",
   },
   {
@@ -66,7 +66,7 @@ let linksData = [
   {
     icon: Book,
     name: "网址集",
-    link: "https://web.imsyy.top/",
+    link: "https://mark.irithys.com",
   },
   {
     icon: Flask,
