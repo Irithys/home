@@ -61,7 +61,7 @@ let linksData = [
   {
     icon: Compass,
     name: "起始页",
-    link: "https://nav.imsyy.top/",
+    link: "https://nav.irithys.com/",
   },
   {
     icon: Book,
