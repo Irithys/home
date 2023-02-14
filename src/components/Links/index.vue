@@ -56,7 +56,7 @@ let linksData = [
   {
     icon: CompactDisc,
     name: "订阅",
-    link: "https://music.imsyy.top/",
+    link: "https://news.irithys.com/",
   },
   {
     icon: Compass,
@@ -66,12 +66,12 @@ let linksData = [
   {
     icon: Book,
     name: "网址集",
-    link: "https://mark.irithys.com",
+    link: "https://mark.irithys.com/",
   },
   {
     icon: Flask,
     name: "实验室",
-    link: "https://lab.imsyy.top/",
+    link: "https://lab.irithys.com/",
   },
 ];
 
