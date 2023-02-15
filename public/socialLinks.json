@@ -17,7 +17,7 @@
     "name": "Email",
     "icon": "/images/icon/email.png",
     "tip": "来封 Email ~",
-    "url": "mailto:irithys@duck.com"
+    "url": "mailto:irithys@duck.com?subject=嘿，我是（）😘，想向你寻求一些帮助👋"
 }, {
     "name": "Telegram",
     "icon": "/images/icon/telegram.png",
