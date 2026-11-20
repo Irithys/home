@@ -110,7 +110,37 @@
       font-size: 0.95rem;
       line-height: 2.05;
       text-align: justify;
+      text-indent: 2em;
       margin-bottom: 1.1rem;
+    }
+    /* 想联系我 */
+    .contact { margin: 2.2rem 0 0; }
+    .contact-title {
+      font-size: 0.8rem;
+      letter-spacing: 0.4em;
+      color: var(--ink-soft);
+      margin-bottom: 0.75rem;
+    }
+    .contact-list {
+      list-style: none;
+      display: grid;
+      gap: 0.45rem;
+    }
+    .contact-list li {
+      font-size: 0.88rem;
+      line-height: 1.9;
+      text-indent: 2em;
+    }
+    .contact-list a {
+      color: var(--camellia);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.25s ease;
+    }
+    .contact-list a:hover { border-bottom-color: var(--camellia); }
+    .contact-list .handle {
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
     }
     .body a {
       color: var(--camellia);
@@ -299,7 +329,17 @@
         <li><a href="https://lab.irithys.com/" target="_blank" rel="noopener">实验室<span class="note">折腾的角落</span></a></li>
         <li><a href="https://app.irithys.com/" target="_blank" rel="noopener">应用<span class="note">自家的小工具</span></a></li>
       </ul>
-    </div>
+    </section>
+
+    <section class="contact">
+      <p class="contact-title">想 联 系 我</p>
+      <ul class="contact-list">
+        <li>在 Mastodon 上找我最快：<a href="https://toot.irithys.com/@thy" target="_blank" rel="noopener"><span class="handle">@thy@irithys.com</span></a>，私信直接输入这个地址就行。</li>
+        <li>想用邮件的话，去<a href="https://irithys.com/friends/" target="_blank" rel="noopener">朋友页</a>的名片里翻一翻，那里放了我的联系方式。</li>
+        <li>博客的每一篇文章下面都可以直接留言，比私信还快。</li>
+      </ul>
+    </section>
+
     <aside class="toots-wrap" data-toots data-limit="3">
       <p class="toots-title">随 信 附 几 句</p>
       <ul class="toots" aria-live="polite">
