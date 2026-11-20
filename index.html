@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="吕楪的个人主页，山茶花舍的来信。这里放着我的博客，还有随信附上的几个小站，见字如面。">
+  <meta name="author" content="吕楪">
+  <meta name="theme-color" content="#f6f1e7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#221f1a" media="(prefers-color-scheme: dark)">
+  <title>山茶花舍的来信</title>
+  <style>
+    :root {
+      --paper: #f6f1e7;
+      --paper-deep: #efe8d9;
+      --ink: #35302a;
+      --ink-soft: #8a8177;
+      --camellia: #b23a48;
+      --border: #e2d9c6;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --paper: #221f1a;
+        --paper-deep: #1b1915;
+        --ink: #d8d0c2;
+        --ink-soft: #8f877b;
+        --camellia: #c9606d;
+        --border: #3a352c;
+      }
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      min-height: 100vh;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+      display: flex;
+      justify-content: center;
+      padding: 6vh 1.25rem 8vh;
+      transition: background 0.55s ease, color 0.55s ease;
+    }
+    .letter {
+      width: 100%;
+      max-width: 640px;
+      background: var(--paper);
+      position: relative;
+      padding: 3rem 2.75rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 2px rgba(53, 48, 42, 0.05), 0 8px 32px rgba(53, 48, 42, 0.06);
+    }
+    @media (max-width: 560px) {
+      body { padding: 3vh 0.9rem 6vh; }
+      .letter { padding: 2.25rem 1.5rem; }
+    }
+    .letter::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(ellipse 120% 90% at 50% 40%, transparent 60%, rgba(53, 48, 42, 0.05) 100%);
+    }
+    @media (prefers-color-scheme: dark) {
+      .letter::before {
+        background: radial-gradient(ellipse 120% 90% at 50% 40%, transparent 60%, rgba(0, 0, 0, 0.25) 100%);
+      }
+    }
+
+    /* 眉题 */
+    .eyebrow {
+      text-align: center;
+      font-size: 0.8rem;
+      letter-spacing: 0.55em;
+      text-indent: 0.55em;
+      color: var(--ink-soft);
+      margin-bottom: 0.9rem;
+    }
+    /* 见字如面 */
+    .salutation {
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: 1.6rem;
+    }
+    .salutation::after {
+      content: "";
+      display: block;
+      width: 3.25rem;
+      height: 2px;
+      background: var(--camellia);
+      margin-top: 0.85rem;
+      opacity: 0.85;
+    }
+    /* 正文 */
+    .body p {
+      font-size: 0.95rem;
+      line-height: 2.05;
+      text-align: justify;
+      margin-bottom: 1.1rem;
+      color: var(--ink);
+    }
+    .body a {
+      color: var(--camellia);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.25s ease;
+    }
+    .body a:hover { border-bottom-color: var(--camellia); }
+    /* 随信附上 */
+    .enclosures { margin: 2.2rem 0 0; }
+    .enclosures-title {
+      font-size: 0.8rem;
+      letter-spacing: 0.4em;
+      color: var(--ink-soft);
+      margin-bottom: 1rem;
+    }
+    .enclosure-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.7rem;
+    }
+    @media (max-width: 560px) {
+      .enclosure-list { grid-template-columns: 1fr; }
+    }
+    .enclosure-list a {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 0.8rem 1.05rem;
+      border: 1px solid var(--border);
+      background: var(--paper-deep);
+      color: var(--ink);
+      text-decoration: none;
+      transition: border-color 0.3s ease, transform 0.3s ease, background 0.3s ease;
+    }
+    .enclosure-list a:hover {
+      border-color: var(--camellia);
+      transform: translateY(-2px);
+    }
+    .enclosure-list .name { font-size: 0.95rem; font-weight: 600; }
+    .enclosure-list .note {
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+      text-align: right;
+      white-space: nowrap;
+    }
+    /* 社交 */
+    .socials {
+      margin-top: 1.9rem;
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+      line-height: 2;
+    }
+    .socials a { color: var(--ink-soft); text-decoration: none; transition: color 0.25s ease; }
+    .socials a:hover { color: var(--camellia); }
+    /* 落款 */
+    .signoff {
+      margin-top: 2.4rem;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      gap: 1.1rem;
+    }
+    .signoff-text {
+      text-align: right;
+      font-size: 0.92rem;
+      line-height: 2;
+      color: var(--ink);
+    }
+    .seal {
+      width: 2.6rem;
+      height: 2.6rem;
+      flex: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--camellia);
+      color: var(--paper);
+      font-size: 1.25rem;
+      font-weight: 600;
+      border-radius: 4px;
+      user-select: none;
+    }
+    /* 页脚 */
+    .footer {
+      margin-top: 3rem;
+      padding-top: 1.2rem;
+      border-top: 1px dashed var(--border);
+      font-size: 0.75rem;
+      color: var(--ink-soft);
+      text-align: center;
+      letter-spacing: 0.08em;
+    }
+    .footer a { color: var(--ink-soft); text-decoration: none; }
+    .footer a:hover { color: var(--camellia); }
+  </style>
+</head>
+<body>
+  <main class="letter">
+    <p class="eyebrow">山 茶 花 舍</p>
+
+    <h1 class="salutation">见字如面</h1>
+
+    <div class="body">
+      <p>我是吕楪，在山茶花舍写点东西。博客放在 NAS 上，文章多半是日常，也有自托管折腾出来的心得，像一封一封寄出去的信。</p>
+      <p>这里是我的个人主页，收着写给自己的信，也收着寄往别处的信。如果你也是走网络遇到这里的，就当是收到了一封意外的信吧。</p>
+    </div>
+
+    <section class="enclosures">
+      <p class="enclosures-title">随 信 附 上</p>
+      <ul class="enclosure-list">
+        <li><a href="https://irithys.com/" target="_blank" rel="noopener">博客<span class="note">山茶花舍的信</span></a></li>
+        <li><a href="https://annal.irithys.com/" target="_blank" rel="noopener">书影音<span class="note">看过的记下</span></a></li>
+        <li><a href="https://news.irithys.com/" target="_blank" rel="noopener">订阅<span class="note">定期寄出的信</span></a></li>
+        <li><a href="https://nav.irithys.com/" target="_blank" rel="noopener">起始页<span class="note">出发的地方</span></a></li>
+        <li><a href="https://mark.irithys.com/" target="_blank" rel="noopener">网址集<span class="note">收着别处的门牌</span></a></li>
+        <li><a href="https://lab.irithys.com/" target="_blank" rel="noopener">实验室<span class="note">折腾的角落</span></a></li>
+      </ul>
+    </section>
+
+    <p class="socials">
+      也可以在这些地方找到我：
+      <a href="https://github.com/irithys" target="_blank" rel="noopener">GitHub</a> ·
+      <a href="https://mona.do/@thy" target="_blank" rel="noopener">Mastodon</a> ·
+      <a href="https://t.me/irithys" target="_blank" rel="noopener">Telegram</a> ·
+      <a href="mailto:irithys@duck.com">Email</a>
+    </p>
+
+    <div class="signoff">
+      <div class="signoff-text">
+        <p>祝你一切都好</p>
+        <p>吕楪，写于某日</p>
+      </div>
+      <div class="seal" aria-hidden="true">楪</div>
+    </div>
+
+    <footer class="footer">
+      <a href="https://irithys.com/" target="_blank" rel="noopener">irithys.com</a> · 2026
+    </footer>
+  </main>
+</body>
+</html>
