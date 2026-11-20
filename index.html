@@ -48,26 +48,39 @@
       border: 1px solid var(--border);
       box-shadow: 0 1px 2px rgba(53, 48, 42, 0.05), 0 8px 32px rgba(53, 48, 42, 0.06);
     }
-    .toots-wrap {
-      position: fixed;
-      top: 50%;
-      left: 50%;
+    .page {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 2.2rem;
+      width: 100%;
+    }
+    .side-stack {
+      display: none;
       width: 260px;
-      transform: translate(calc(min(640px, 100vw - 4rem) / 2 + 2.4rem), -50%);
-      margin: 0;
+      flex: none;
+      flex-direction: column;
+      gap: 1.4rem;
+      position: sticky;
+      top: 6vh;
+    }
+    .side-card {
       padding: 1.15rem 1.3rem;
       border: 1px dashed var(--border);
       background: var(--paper);
       box-shadow: 0 1px 2px rgba(53, 48, 42, 0.05), 0 8px 32px rgba(53, 48, 42, 0.06);
     }
+    @media (min-width: 1081px) {
+      .side-stack { display: flex; }
+    }
     @media (max-width: 1080px) {
-      .toots-wrap {
-        position: static;
-        width: auto;
-        transform: none;
+      .side-stack {
+        display: flex;
+        width: 100%;
         max-width: 640px;
         margin: 1.6rem auto 0;
       }
+      .page { flex-direction: column; align-items: center; }
     }
     @media (max-width: 560px) {
       body { padding: 3vh 0.9rem 6vh; }
@@ -129,7 +142,7 @@
       margin-bottom: 1.1rem;
     }
     /* 想联系我 */
-    .contact { margin: 2.2rem 0 0; }
+    .contact { margin: 0; }
     .contact-title {
       font-size: 0.8rem;
       letter-spacing: 0.4em;
@@ -142,9 +155,10 @@
       gap: 0.45rem;
     }
     .contact-list li {
-      font-size: 0.88rem;
-      line-height: 1.9;
-      text-indent: 2em;
+      font-size: 0.82rem;
+      line-height: 1.85;
+      text-indent: -1.5em;
+      padding-left: 1.5em;
     }
     .contact-list a {
       color: var(--camellia);
@@ -326,6 +340,7 @@
   </style>
 </head>
 <body>
+  <div class="page">
   <main class="letter">
     <div class="letter-main">
       <img class="avatar" src="./img/avatar2.webp" alt="吕楪的头像" width="88" height="88">
@@ -348,14 +363,6 @@
       </ul>
     </section>
 
-    <section class="contact">
-      <p class="contact-title">想 联 系 我</p>
-      <ul class="contact-list">
-        <li>在 Mastodon 上找我最快：<a href="https://toot.irithys.com/@thy" target="_blank" rel="noopener"><span class="handle">@thy@irithys.com</span></a>，私信直接输入这个地址就行。</li>
-        <li>想用邮件的话，去<a href="https://irithys.com/friends/" target="_blank" rel="noopener">朋友页</a>的名片里翻一翻，那里放了我的联系方式。</li>
-        <li>博客的每一篇文章下面都可以直接留言，比私信还快。</li>
-      </ul>
-    </section>
     </div>
 
 
@@ -371,17 +378,31 @@
       <a href="https://i.irithys.com/" target="_blank" rel="noopener">i.irithys.com</a> · 2026
     </footer>
   </main>
-    <aside class="toots-wrap" data-toots data-limit="3">
-      <p class="toots-title">嘟 嘟 <span class="toots-sub">GotoSocial</span></p>
-      <ul class="toots" aria-live="polite">
-        <li class="toot--loading">正在取信…</li>
-      </ul>
-      <div class="toots-foot">
-        <span class="toots-avatar"><img src="./img/avatar2.webp" alt="吕楪的头像" width="44" height="44"></span>
-        <a href="https://toot.irithys.com/@thy" target="_blank" rel="noopener">toot@irithys.com</a>
-      </div>
-    </aside>
 
+    <div class="side-stack">
+      <section class="side-card contact">
+        <p class="contact-title">想 联 系 我</p>
+        <ul class="contact-list">
+          <li>Mastodon 最快：<a href="https://toot.irithys.com/@thy" target="_blank" rel="noopener"><span class="handle">@thy@irithys.com</span></a>，私信直接输这个地址。</li>
+          <li>Telegram：<a href="https://t.me/irithysBot" target="_blank" rel="noopener">t.me/irithysBot</a></li>
+          <li>GitHub：<a href="https://github.com/Irithys" target="_blank" rel="noopener">github.com/Irithys</a></li>
+          <li>RSS：<a href="https://irithys.com/index.xml" target="_blank" rel="noopener">irithys.com/index.xml</a></li>
+          <li>邮件：去<a href="https://irithys.com/friends/" target="_blank" rel="noopener">朋友页</a>的名片里翻。</li>
+        </ul>
+      </section>
+
+      <aside class="side-card toots-wrap" data-toots data-limit="3">
+        <p class="toots-title">嘟 嘟 <span class="toots-sub">GotoSocial</span></p>
+        <ul class="toots" aria-live="polite">
+          <li class="toot--loading">正在取信…</li>
+        </ul>
+        <div class="toots-foot">
+          <span class="toots-avatar"><img src="./img/avatar2.webp" alt="吕楪的头像" width="44" height="44"></span>
+          <a href="https://toot.irithys.com/@thy" target="_blank" rel="noopener">toot@irithys.com</a>
+        </div>
+      </aside>
+    </div>
+  </div>
   <script>
       var updated = document.getElementById("updated");
       if (updated) {
