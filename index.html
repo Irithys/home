@@ -7,7 +7,7 @@
   <meta name="author" content="吕楪">
   <meta name="theme-color" content="#f6f1e7" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#221f1a" media="(prefers-color-scheme: dark)">
-  <title>吕楪，山茶花舍的写信人</title>
+  <title>吕楪 · 个人主页</title>
   <style>
     :root {
       --paper: #f6f1e7;
@@ -41,12 +41,28 @@
     }
     .letter {
       width: 100%;
-      max-width: 640px;
+      max-width: 960px;
       background: var(--paper);
       position: relative;
       padding: 3rem 2.75rem;
       border: 1px solid var(--border);
       box-shadow: 0 1px 2px rgba(53, 48, 42, 0.05), 0 8px 32px rgba(53, 48, 42, 0.06);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 260px;
+      grid-template-areas: "main side";
+      gap: 2.5rem;
+      align-items: start;
+    }
+    .letter-main { grid-area: main; min-width: 0; }
+    .toots-wrap { grid-area: side; margin: 0; }
+    @media (max-width: 860px) {
+      .letter {
+        max-width: 640px;
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas: "main" "side";
+        gap: 0;
+      }
+      .toots-wrap { margin: 2.2rem 0 0; }
     }
     @media (max-width: 560px) {
       body { padding: 3vh 0.9rem 6vh; }
@@ -265,7 +281,8 @@
 </head>
 <body>
   <main class="letter">
-    <p class="eyebrow">山 茶 花 舍</p>
+    <div class="letter-main">
+      <p class="eyebrow">吕 楪</p>
 
     <h1 class="salutation">你好呀，我是吕楪</h1>
 
@@ -282,9 +299,8 @@
         <li><a href="https://lab.irithys.com/" target="_blank" rel="noopener">实验室<span class="note">折腾的角落</span></a></li>
         <li><a href="https://app.irithys.com/" target="_blank" rel="noopener">应用<span class="note">自家的小工具</span></a></li>
       </ul>
-    </section>
-
-    <section class="toots-wrap" data-toots data-limit="3">
+    </div>
+    <aside class="toots-wrap" data-toots data-limit="3">
       <p class="toots-title">随 信 附 几 句</p>
       <ul class="toots" aria-live="polite">
         <li class="toot--loading">正在翻最近的嘟文，稍等一下</li>
@@ -293,12 +309,12 @@
         <span class="toots-avatar" aria-hidden="true">楪<img alt="" width="44" height="44" hidden></span>
         <a href="https://toot.irithys.com/@thy" target="_blank" rel="noopener">toot@irithys.com</a>
       </div>
-    </section>
+    </aside>
 
     <div class="signoff">
       <div class="signoff-text">
         <p>祝你一切都好</p>
-        <p>吕楪，写于某日</p>
+        <p>吕楪，更新于 <time id="updated" data-fallback="某日">某日</time></p>
       </div>
       <div class="seal" aria-hidden="true">楪</div>
     </div>
@@ -309,6 +325,14 @@
   </main>
 
   <script>
+      var updated = document.getElementById("updated");
+      if (updated) {
+        var now = new Date();
+        var mm = String(now.getMonth() + 1).padStart(2, "0");
+        var dd = String(now.getDate()).padStart(2, "0");
+        updated.textContent = now.getFullYear() + " · " + mm + " · " + dd;
+      }
+
     (function () {
       var FEED = "https://toot.irithys.com/@thy/feed.rss";
       var TIMEOUT = 20000;
