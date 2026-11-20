@@ -199,6 +199,13 @@
       color: var(--ink-soft);
       margin-bottom: 0.9rem;
     }
+    .toots-sub {
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      color: var(--ink-soft);
+      opacity: 0.75;
+      margin-left: 0.35rem;
+    }
     .toots { list-style: none; display: grid; gap: 0.85rem; }
     .toot {
       display: grid;
@@ -324,7 +331,6 @@
     <section class="enclosures">
       <p class="enclosures-title">随 信 附 上</p>
       <ul class="enclosure-list">
-        <li><a href="https://irithys.com/" target="_blank" rel="noopener">博客<span class="note">山茶花舍的信</span></a></li>
         <li><a href="https://news.irithys.com/" target="_blank" rel="noopener">订阅<span class="note">定期寄出的信</span></a></li>
         <li><a href="https://lab.irithys.com/" target="_blank" rel="noopener">实验室<span class="note">折腾的角落</span></a></li>
         <li><a href="https://app.irithys.com/" target="_blank" rel="noopener">应用<span class="note">自家的小工具</span></a></li>
@@ -341,12 +347,12 @@
     </section>
 
     <aside class="toots-wrap" data-toots data-limit="3">
-      <p class="toots-title">随 信 附 几 句</p>
+      <p class="toots-title">嘟 嘟 <span class="toots-sub">GotoSocial</span></p>
       <ul class="toots" aria-live="polite">
-        <li class="toot--loading">正在翻最近的嘟文，稍等一下</li>
+        <li class="toot--loading">正在取信…</li>
       </ul>
       <div class="toots-foot">
-        <span class="toots-avatar" aria-hidden="true">楪<img alt="" width="44" height="44" hidden></span>
+        <span class="toots-avatar"><img src="./img/avatar2.webp" alt="吕楪的头像" width="44" height="44"></span>
         <a href="https://toot.irithys.com/@thy" target="_blank" rel="noopener">toot@irithys.com</a>
       </div>
     </aside>
@@ -360,7 +366,7 @@
     </div>
 
     <footer class="footer">
-      <a href="https://irithys.com/" target="_blank" rel="noopener">irithys.com</a> · 2026
+      <a href="https://i.irithys.com/" target="_blank" rel="noopener">i.irithys.com</a> · 2026
     </footer>
   </main>
 
@@ -379,25 +385,9 @@
       var wrap = document.querySelector("[data-toots]");
       if (!wrap) return;
       var list = wrap.querySelector(".toots");
-      var avatarBox = wrap.querySelector(".toots-avatar");
-      var avatarImg = avatarBox.querySelector("img");
       var limit = parseInt(wrap.getAttribute("data-limit"), 10) || 3;
       var feedOrigin = "https://toot.irithys.com";
 
-      function setAvatar(src) {
-        if (!src || !avatarImg) return;
-        var timer;
-        function arm() {
-          clearTimeout(timer);
-          timer = setTimeout(function () {
-            if (!avatarImg.complete || !avatarImg.naturalWidth) avatarImg.hidden = true;
-          }, 10000);
-        }
-        avatarImg.onload = function () { clearTimeout(timer); avatarImg.hidden = false; };
-        avatarImg.onerror = function () { clearTimeout(timer); avatarImg.hidden = true; };
-        avatarImg.src = src;
-        arm();
-      }
 
       function isEmoji(src) {
         if (!/^https?:\/\//i.test(src)) return false;
@@ -527,8 +517,6 @@
         .then(function (xml) {
           clearTimeout(timer);
           var doc = new DOMParser().parseFromString(xml, "application/xml");
-          var imageNode = doc.querySelector("channel image url");
-          setAvatar(imageNode ? (imageNode.textContent || "").trim() : "");
           var items = Array.prototype.map.call(doc.querySelectorAll("item"), function (item) {
             var contentNode = null;
             Array.prototype.forEach.call(item.children, function (child) {
