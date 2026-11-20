@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="吕楪的个人主页，山茶花舍的来信。这里放着我的博客，还有随信附上的几个小站，见字如面。">
+  <meta name="description" content="吕楪的个人主页，山茶花舍的写信人。一个喜欢折腾自托管、把日子折进信封的人，这里收着博客、订阅、实验室，还有最近的嘟文。">
   <meta name="author" content="吕楪">
   <meta name="theme-color" content="#f6f1e7" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#221f1a" media="(prefers-color-scheme: dark)">
-  <title>山茶花舍的来信</title>
+  <title>吕楪，山茶花舍的写信人</title>
   <style>
     :root {
       --paper: #f6f1e7;
@@ -51,6 +51,7 @@
     @media (max-width: 560px) {
       body { padding: 3vh 0.9rem 6vh; }
       .letter { padding: 2.25rem 1.5rem; }
+      .enclosure-list { grid-template-columns: 1fr; }
     }
     .letter::before {
       content: "";
@@ -65,7 +66,7 @@
       }
     }
 
-    /* 眉题 */
+    /* 眉题与称呼 */
     .eyebrow {
       text-align: center;
       font-size: 0.8rem;
@@ -74,7 +75,6 @@
       color: var(--ink-soft);
       margin-bottom: 0.9rem;
     }
-    /* 见字如面 */
     .salutation {
       font-size: 1.35rem;
       font-weight: 600;
@@ -95,7 +95,6 @@
       line-height: 2.05;
       text-align: justify;
       margin-bottom: 1.1rem;
-      color: var(--ink);
     }
     .body a {
       color: var(--camellia);
@@ -117,9 +116,6 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 0.7rem;
-    }
-    @media (max-width: 560px) {
-      .enclosure-list { grid-template-columns: 1fr; }
     }
     .enclosure-list a {
       display: flex;
@@ -144,6 +140,79 @@
       text-align: right;
       white-space: nowrap;
     }
+    /* 随信附几句：嘟文卡片，调子对齐博客右栏 */
+    .toots-wrap {
+      margin: 2.2rem 0 0;
+      padding: 1.15rem 1.3rem;
+      border: 1px dashed var(--border);
+      background: color-mix(in srgb, var(--paper-deep) 55%, transparent);
+    }
+    .toots-title {
+      font-size: 0.8rem;
+      letter-spacing: 0.4em;
+      color: var(--ink-soft);
+      margin-bottom: 0.9rem;
+    }
+    .toots { list-style: none; display: grid; gap: 0.85rem; }
+    .toot {
+      display: grid;
+      gap: 0.3rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px dashed color-mix(in srgb, var(--border) 80%, transparent);
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .toots li:last-child > .toot { border-bottom: 0; padding-bottom: 0; }
+    .toot time {
+      font-size: 0.66rem;
+      letter-spacing: 0.14em;
+      color: var(--ink-soft);
+      font-variant-numeric: tabular-nums;
+    }
+    .toot__body { font-size: 0.85rem; line-height: 1.8; overflow-wrap: anywhere; }
+    .toot__body p { margin: 0 0 0.4em; text-indent: 2em; }
+    .toot__body p:last-child { margin-bottom: 0; }
+    .toot__body a { color: var(--camellia); text-decoration: none; }
+    .toot__emoji {
+      height: 1.35em; max-width: none; vertical-align: -0.25em;
+      margin: 0 1px; display: inline-block;
+    }
+    .toot:hover .toot__body { color: var(--camellia); }
+    .toot--loading { font-size: 0.8rem; color: var(--ink-soft); }
+    .toots-foot {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-top: 0.9rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--border);
+    }
+    .toots-avatar {
+      width: 2.2rem; height: 2.2rem; flex: none;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: grid; place-items: center;
+      overflow: hidden;
+      background: color-mix(in srgb, var(--camellia) 12%, transparent);
+      color: var(--camellia);
+      font-size: 0.85rem; font-weight: 600;
+      position: relative;
+    }
+    .toots-avatar img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .toots-foot a {
+      flex: 1; min-width: 0;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+      font-size: 0.72rem;
+      color: var(--ink-soft);
+      text-decoration: none;
+      transition: color 0.25s ease;
+    }
+    .toots-foot a:hover { color: var(--camellia); }
+    .toots__fallback { font-size: 0.8rem; color: var(--ink-soft); }
     /* 社交 */
     .socials {
       margin-top: 1.9rem;
@@ -165,7 +234,6 @@
       text-align: right;
       font-size: 0.92rem;
       line-height: 2;
-      color: var(--ink);
     }
     .seal {
       width: 2.6rem;
@@ -199,32 +267,33 @@
   <main class="letter">
     <p class="eyebrow">山 茶 花 舍</p>
 
-    <h1 class="salutation">见字如面</h1>
+    <h1 class="salutation">你好呀，我是吕楪</h1>
 
     <div class="body">
-      <p>我是吕楪，在山茶花舍写点东西。博客放在 NAS 上，文章多半是日常，也有自托管折腾出来的心得，像一封一封寄出去的信。</p>
-      <p>这里是我的个人主页，收着写给自己的信，也收着寄往别处的信。如果你也是走网络遇到这里的，就当是收到了一封意外的信吧。</p>
+      <p>山茶花舍的写信人。这里是我在互联网上的小房子，从 2016 年开始断断续续地住到现在。博客换过好几个名字，搬过好几次家，唯一没变的是，把日子折进信封，寄给愿意读的你。</p>
+      <p>平时折腾写博客、自托管，家里一台 NAS 二十四小时开着，是这些服务的老家。能自己养的服务都自己养，别人的服务说关就关，不踏实。</p>
     </div>
 
     <section class="enclosures">
       <p class="enclosures-title">随 信 附 上</p>
       <ul class="enclosure-list">
         <li><a href="https://irithys.com/" target="_blank" rel="noopener">博客<span class="note">山茶花舍的信</span></a></li>
-        <li><a href="https://annal.irithys.com/" target="_blank" rel="noopener">书影音<span class="note">看过的记下</span></a></li>
         <li><a href="https://news.irithys.com/" target="_blank" rel="noopener">订阅<span class="note">定期寄出的信</span></a></li>
-        <li><a href="https://nav.irithys.com/" target="_blank" rel="noopener">起始页<span class="note">出发的地方</span></a></li>
-        <li><a href="https://mark.irithys.com/" target="_blank" rel="noopener">网址集<span class="note">收着别处的门牌</span></a></li>
         <li><a href="https://lab.irithys.com/" target="_blank" rel="noopener">实验室<span class="note">折腾的角落</span></a></li>
+        <li><a href="https://app.irithys.com/" target="_blank" rel="noopener">应用<span class="note">自家的小工具</span></a></li>
       </ul>
     </section>
 
-    <p class="socials">
-      也可以在这些地方找到我：
-      <a href="https://github.com/irithys" target="_blank" rel="noopener">GitHub</a> ·
-      <a href="https://mona.do/@thy" target="_blank" rel="noopener">Mastodon</a> ·
-      <a href="https://t.me/irithys" target="_blank" rel="noopener">Telegram</a> ·
-      <a href="mailto:irithys@duck.com">Email</a>
-    </p>
+    <section class="toots-wrap" data-toots data-limit="3">
+      <p class="toots-title">随 信 附 几 句</p>
+      <ul class="toots" aria-live="polite">
+        <li class="toot--loading">正在翻最近的嘟文，稍等一下</li>
+      </ul>
+      <div class="toots-foot">
+        <span class="toots-avatar" aria-hidden="true">楪<img alt="" width="44" height="44" hidden></span>
+        <a href="https://toot.irithys.com/@thy" target="_blank" rel="noopener">toot@irithys.com</a>
+      </div>
+    </section>
 
     <div class="signoff">
       <div class="signoff-text">
@@ -238,5 +307,187 @@
       <a href="https://irithys.com/" target="_blank" rel="noopener">irithys.com</a> · 2026
     </footer>
   </main>
+
+  <script>
+    (function () {
+      var FEED = "https://toot.irithys.com/@thy/feed.rss";
+      var TIMEOUT = 20000;
+      var wrap = document.querySelector("[data-toots]");
+      if (!wrap) return;
+      var list = wrap.querySelector(".toots");
+      var avatarBox = wrap.querySelector(".toots-avatar");
+      var avatarImg = avatarBox.querySelector("img");
+      var limit = parseInt(wrap.getAttribute("data-limit"), 10) || 3;
+      var feedOrigin = "https://toot.irithys.com";
+
+      function setAvatar(src) {
+        if (!src || !avatarImg) return;
+        var timer;
+        function arm() {
+          clearTimeout(timer);
+          timer = setTimeout(function () {
+            if (!avatarImg.complete || !avatarImg.naturalWidth) avatarImg.hidden = true;
+          }, 10000);
+        }
+        avatarImg.onload = function () { clearTimeout(timer); avatarImg.hidden = false; };
+        avatarImg.onerror = function () { clearTimeout(timer); avatarImg.hidden = true; };
+        avatarImg.src = src;
+        arm();
+      }
+
+      function isEmoji(src) {
+        if (!/^https?:\/\//i.test(src)) return false;
+        try {
+          var u = new URL(src);
+          return u.origin === feedOrigin && u.pathname.indexOf("/emoji/") > -1;
+        } catch (e) { return false; }
+      }
+
+      /* 只写文本、链接和本站 emoji，绝不 innerHTML */
+      function appendClean(target, node) {
+        Array.prototype.forEach.call(node.childNodes, function (child) {
+          if (child.nodeType === 3) {
+            target.appendChild(document.createTextNode(child.nodeValue));
+            return;
+          }
+          if (child.nodeType !== 1) return;
+          var tag = child.tagName.toLowerCase();
+          if (tag === "br") { target.appendChild(document.createElement("br")); return; }
+          if (tag === "img") {
+            var src = child.getAttribute("src") || "";
+            if (!isEmoji(src)) return;
+            var img = document.createElement("img");
+            img.className = "toot__emoji";
+            img.alt = "";
+            img.title = child.getAttribute("title") || child.getAttribute("alt") || "";
+            img.loading = "eager";
+            img.decoding = "async";
+            img.style.visibility = "hidden";
+            img.onload = function () { img.style.visibility = ""; };
+            img.onerror = function () { img.remove(); };
+            img.src = src;
+            target.appendChild(img);
+            return;
+          }
+          if (tag === "p" || tag === "div") {
+            var p = document.createElement("p");
+            appendClean(p, child);
+            if (p.textContent.trim() || p.querySelector("img")) target.appendChild(p);
+            return;
+          }
+          if (tag === "a") {
+            var href = child.getAttribute("href") || "";
+            if (/^https?:\/\//i.test(href)) {
+              var a = document.createElement("a");
+              a.href = href;
+              a.target = "_blank";
+              a.rel = "noopener noreferrer";
+              appendClean(a, child);
+              target.appendChild(a);
+              return;
+            }
+          }
+          if (tag === "strong" || tag === "b") {
+            var strong = document.createElement("strong");
+            appendClean(strong, child);
+            target.appendChild(strong);
+            return;
+          }
+          if (tag === "em" || tag === "i") {
+            var em = document.createElement("em");
+            appendClean(em, child);
+            target.appendChild(em);
+            return;
+          }
+          appendClean(target, child);
+        });
+      }
+
+      function renderBody(target, raw, fallbackText) {
+        target.textContent = "";
+        var doc = new DOMParser().parseFromString(raw || "", "text/html");
+        var body = doc.body;
+        if (!body || (!body.textContent.trim() && !body.querySelector("img"))) {
+          target.textContent = fallbackText;
+          return;
+        }
+        appendClean(target, body);
+      }
+
+      function fmtDate(pub) {
+        var d = new Date(pub);
+        if (isNaN(d.getTime())) return "";
+        var mm = String(d.getMonth() + 1).padStart(2, "0");
+        var dd = String(d.getDate()).padStart(2, "0");
+        return d.getFullYear() === new Date().getFullYear() ? mm + " · " + dd : d.getFullYear() + "." + mm;
+      }
+
+      function fallback() {
+        list.textContent = "";
+        var p = document.createElement("li");
+        p.className = "toots__fallback";
+        p.textContent = "好像还没找到耶，嘟文那边可能打盹了";
+        list.appendChild(p);
+      }
+
+      function render(items) {
+        if (!items.length) return fallback();
+        list.textContent = "";
+        items.slice(0, limit).forEach(function (it) {
+          var li = document.createElement("li");
+          var a = document.createElement("a");
+          a.className = "toot";
+          a.href = it.link;
+          a.target = "_blank";
+          a.rel = "noopener noreferrer";
+          var t = document.createElement("time");
+          t.dateTime = it.iso;
+          t.textContent = it.date;
+          var body = document.createElement("div");
+          body.className = "toot__body";
+          renderBody(body, it.content, it.text);
+          a.appendChild(t);
+          a.appendChild(body);
+          li.appendChild(a);
+          list.appendChild(li);
+        });
+      }
+
+      var ctrl = new AbortController();
+      var timer = setTimeout(function () { ctrl.abort(); }, TIMEOUT);
+      fetch(FEED, { signal: ctrl.signal, mode: "cors", credentials: "omit" })
+        .then(function (r) {
+          if (!r.ok) throw new Error("HTTP " + r.status);
+          return r.text();
+        })
+        .then(function (xml) {
+          clearTimeout(timer);
+          var doc = new DOMParser().parseFromString(xml, "application/xml");
+          var imageNode = doc.querySelector("channel image url");
+          setAvatar(imageNode ? (imageNode.textContent || "").trim() : "");
+          var items = Array.prototype.map.call(doc.querySelectorAll("item"), function (item) {
+            var contentNode = null;
+            Array.prototype.forEach.call(item.children, function (child) {
+              if (child.localName === "encoded") contentNode = child;
+            });
+            var raw = (item.querySelector("title") || {}).textContent || "";
+            var text = raw.replace(/:[a-z0-9_+-]+:/gi, " ").replace(/\s+/g, " ").trim();
+            var pub = (item.querySelector("pubDate") || {}).textContent || "";
+            return {
+              text: text,
+              content: contentNode ? contentNode.textContent : "",
+              link: (item.querySelector("link") || {}).textContent || "",
+              iso: pub,
+              date: fmtDate(pub)
+            };
+          }).filter(function (it) { return (it.content || it.text) && it.link; });
+          render(items);
+        })
+        .catch(function () {
+          clearTimeout(timer);
+          fallback();
+        });
+    })();
+  </script>
 </body>
 </html>
