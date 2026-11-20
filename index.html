@@ -41,28 +41,33 @@
     }
     .letter {
       width: 100%;
-      max-width: 960px;
+      max-width: 640px;
       background: var(--paper);
       position: relative;
       padding: 3rem 2.75rem;
       border: 1px solid var(--border);
       box-shadow: 0 1px 2px rgba(53, 48, 42, 0.05), 0 8px 32px rgba(53, 48, 42, 0.06);
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 260px;
-      grid-template-areas: "main side";
-      gap: 2.5rem;
-      align-items: start;
     }
-    .letter-main { grid-area: main; min-width: 0; }
-    .toots-wrap { grid-area: side; margin: 0; }
-    @media (max-width: 860px) {
-      .letter {
+    .toots-wrap {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 260px;
+      transform: translate(calc(min(640px, 100vw - 4rem) / 2 + 2.4rem), -50%);
+      margin: 0;
+      padding: 1.15rem 1.3rem;
+      border: 1px dashed var(--border);
+      background: var(--paper);
+      box-shadow: 0 1px 2px rgba(53, 48, 42, 0.05), 0 8px 32px rgba(53, 48, 42, 0.06);
+    }
+    @media (max-width: 1080px) {
+      .toots-wrap {
+        position: static;
+        width: auto;
+        transform: none;
         max-width: 640px;
-        grid-template-columns: minmax(0, 1fr);
-        grid-template-areas: "main" "side";
-        gap: 0;
+        margin: 1.6rem auto 0;
       }
-      .toots-wrap { margin: 2.2rem 0 0; }
     }
     @media (max-width: 560px) {
       body { padding: 3vh 0.9rem 6vh; }
@@ -197,12 +202,6 @@
       white-space: nowrap;
     }
     /* 随信附几句：嘟文卡片，调子对齐博客右栏 */
-    .toots-wrap {
-      margin: 2.2rem 0 0;
-      padding: 1.15rem 1.3rem;
-      border: 1px dashed var(--border);
-      background: color-mix(in srgb, var(--paper-deep) 55%, transparent);
-    }
     .toots-title {
       font-size: 0.8rem;
       letter-spacing: 0.4em;
@@ -359,16 +358,6 @@
     </section>
     </div>
 
-    <aside class="toots-wrap" data-toots data-limit="3">
-      <p class="toots-title">嘟 嘟 <span class="toots-sub">GotoSocial</span></p>
-      <ul class="toots" aria-live="polite">
-        <li class="toot--loading">正在取信…</li>
-      </ul>
-      <div class="toots-foot">
-        <span class="toots-avatar"><img src="./img/avatar2.webp" alt="吕楪的头像" width="44" height="44"></span>
-        <a href="https://toot.irithys.com/@thy" target="_blank" rel="noopener">toot@irithys.com</a>
-      </div>
-    </aside>
 
     <div class="signoff">
       <div class="signoff-text">
@@ -382,6 +371,16 @@
       <a href="https://i.irithys.com/" target="_blank" rel="noopener">i.irithys.com</a> · 2026
     </footer>
   </main>
+    <aside class="toots-wrap" data-toots data-limit="3">
+      <p class="toots-title">嘟 嘟 <span class="toots-sub">GotoSocial</span></p>
+      <ul class="toots" aria-live="polite">
+        <li class="toot--loading">正在取信…</li>
+      </ul>
+      <div class="toots-foot">
+        <span class="toots-avatar"><img src="./img/avatar2.webp" alt="吕楪的头像" width="44" height="44"></span>
+        <a href="https://toot.irithys.com/@thy" target="_blank" rel="noopener">toot@irithys.com</a>
+      </div>
+    </aside>
 
   <script>
       var updated = document.getElementById("updated");
