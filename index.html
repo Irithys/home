@@ -141,36 +141,51 @@
       text-indent: 2em;
       margin-bottom: 1.1rem;
     }
-    /* 想联系我 */
+    /* 想联系我：按钮组 */
     .contact { margin: 0; }
     .contact-title {
       font-size: 0.8rem;
       letter-spacing: 0.4em;
       color: var(--ink-soft);
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.85rem;
     }
     .contact-list {
       list-style: none;
       display: grid;
-      gap: 0.45rem;
-    }
-    .contact-list li {
-      font-size: 0.82rem;
-      line-height: 1.85;
-      text-indent: -1.5em;
-      padding-left: 1.5em;
+      gap: 0.55rem;
     }
     .contact-list a {
-      color: var(--camellia);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.6rem;
+      padding: 0.55rem 0.9rem;
+      border: 1px solid var(--border);
+      background: var(--paper);
+      color: var(--ink);
       text-decoration: none;
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.25s ease;
+      font-size: 0.82rem;
+      line-height: 1.5;
+      transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
     }
-    .contact-list a:hover { border-bottom-color: var(--camellia); }
-    .contact-list .handle {
+    .contact-list a:hover {
+      border-color: var(--camellia);
+      background: color-mix(in srgb, var(--camellia) 6%, var(--paper));
+      transform: translateY(-1px);
+    }
+    .contact-list .label {
       font-weight: 600;
-      font-variant-numeric: tabular-nums;
+      flex: none;
     }
+    .contact-list .value {
+      color: var(--ink-soft);
+      font-size: 0.76rem;
+      text-align: right;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .contact-list a:hover .value { color: var(--camellia); }
     .body a {
       color: var(--camellia);
       text-decoration: none;
@@ -383,11 +398,11 @@
       <section class="side-card contact">
         <p class="contact-title">想 联 系 我</p>
         <ul class="contact-list">
-          <li>Mastodon 最快：<a href="https://toot.irithys.com/@thy" target="_blank" rel="noopener"><span class="handle">@thy@irithys.com</span></a>，私信直接输这个地址。</li>
-          <li>Telegram：<a href="https://t.me/irithysBot" target="_blank" rel="noopener">t.me/irithysBot</a></li>
-          <li>GitHub：<a href="https://github.com/Irithys" target="_blank" rel="noopener">github.com/Irithys</a></li>
-          <li>RSS：<a href="https://irithys.com/index.xml" target="_blank" rel="noopener">irithys.com/index.xml</a></li>
-          <li>邮件：去<a href="https://irithys.com/friends/" target="_blank" rel="noopener">朋友页</a>的名片里翻。</li>
+          <li><a href="https://toot.irithys.com/@thy" target="_blank" rel="noopener"><span class="label">Mastodon</span><span class="value">@thy@irithys.com</span></a></li>
+          <li><a href="https://t.me/irithysBot" target="_blank" rel="noopener"><span class="label">Telegram</span><span class="value">irithysBot</span></a></li>
+          <li><a href="https://github.com/Irithys" target="_blank" rel="noopener"><span class="label">GitHub</span><span class="value">Irithys</span></a></li>
+          <li><a href="https://irithys.com/index.xml" target="_blank" rel="noopener"><span class="label">RSS</span><span class="value">irithys.com</span></a></li>
+          <li><a href="mailto:irithys@duck.com"><span class="label">Email</span><span class="value">irithys@duck.com</span></a></li>
         </ul>
       </section>
 
